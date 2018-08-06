@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container">
+    <div class="row main">
+        <div class="col-md-6">
+            <h2 class="title">Mis Datos</h2>
+            <hr/>
+            <form method="post" th:action="@{/user/profile}">
+                <input type="hidden" name="id" th:value="${user.id}"/>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.nombre}" id="nombre"
+                                   name="nombre" roleId="nombre" placeholder="Introduzca su nombre"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+
+          <div class="form-group">
+                    <label for="segundoNombre">Segundo Nombre</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.segundoNombre}" id="segundoNombre"
+                                   name="segundoNombre" placeholder="Introduzca su segundo nombre">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="apellidoPaterno" class="cols-sm-2 control-label">Apellido Paterno</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.apellidoPaterno}" id="apellidoPaterno"
+                                   name="apellidoPaterno" roleId="apellidoPaterno" placeholder="Introduzca su apellido paterno"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label for="apellidoMaterno" class="cols-sm-2 control-label">Apellido Materno</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.apellidoMaterno}" id="apellidoMaterno"
+                                   name="apellidoMaterno" roleId="apellidoMaterno" placeholder="Introduzca su apellido materno">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono" class="cols-sm-2 control-label">Teléfono</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.telefono}" id="telefono" name="telefono"
+                                   roleId="telefono" placeholder="xxx-xxx-xxxx" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Correo Eléctronico</label><span
+                        class="bg-danger pull-right" th:if="${emailExists}">Correo esta registrado</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.email}" id="email" name="email"
+                                   roleId="email" placeholder="Introduzca su correo" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Usuario</label><span
+                        class="bg-danger pull-right" th:if="${usernameExists}">Usuario esta registrado</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.username}" id="username"
+                                   name="username" roleId="username" placeholder="Introduzca su usuario"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-block ">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Mis Cuentas</h1>
+                    <hr/>
+                </div>
+                <table class="responstable">
+                    <tr>
+                        <th>Cuenta Primaria</th>
+                        <th>Cuenta de Ahorros</th>
+                    </tr>
+
+                    <tr>
+                        <td data-th-text="${user.cuentaPrimaria.numeroDeCuenta}">...</td>
+                        <td data-th-text="${user.cuentaAhorros.numeroDeCuenta}">...</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

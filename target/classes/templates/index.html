@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+   <a class="navbar-brand bg-white">Banking App</a>
+</nav>
+<body>
+<!-- Login Section -->
+
+    <div class="container">
+        <div class="row ">
+            <div class="main-center ">
+                <div class="bg-danger" th:if="${param.error}">
+                   Usuario y/o contraseña incorrectos!
+                </div>
+                <div class="bg-info" th:if="${param.logout}">
+                    Has salido de la aplicacion!
+                </div>
+                <form class="form-signin" th:action="@{/index}" method="post">
+                    <h2 class="form-signin-heading">Inicia Sesión</h2>
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Usuario</label>
+                        <input type="text" roleId="username" class="form-control" placeholder="Usuario" name="username"
+                               id="username"
+                               required="required" autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Contraseña</label>
+                        <input type="password" roleId="inputPassword" class="form-control" placeholder="Contraseña"
+                               id="password"
+                               name="password" required="required"/>
+                    </div>
+            
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                </form>
+                
+                <hr />
+                
+                <div class="form-group ">
+                    <a type="submit" class="btn btn-info btn-lg btn-block login-button" th:href="@{/signup}">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>
